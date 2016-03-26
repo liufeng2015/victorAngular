@@ -1,2 +1,2 @@
 # victorAngular
-just an project with angular library
+just a project with angular library
