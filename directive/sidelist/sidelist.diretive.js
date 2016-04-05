@@ -47,12 +47,12 @@
                     return{
                         pre:function(scope,element){
                             var parentNode = angular.element(element[0]);
-                            var divs = "<div class='side_animate'><div class='side_title' ng-click='selectClick()'><span>"+scope.itemData.group+"</span></div>";
+                            var divs = "<div class='side_title' ng-click='selectClick()'><span>"+scope.itemData.group+"</span></div>";
                             divs += "<ul class='side_ul' ng-hide = 'isHide'>";
                             angular.forEach(scope.itemData.items,function(item){
                                 divs += "<li class='side_li'><span>"+item+"</span></li>";
                             });
-                            divs += "</div></ul>";
+                            divs += "</ul>";
                             var template = angular.element(divs);
                             var newHtml = $compile(template)(scope);
                             parentNode.append(newHtml);

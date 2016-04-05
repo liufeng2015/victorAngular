@@ -13,6 +13,7 @@ body{
     overflow-x: hidden;
     overflow-y: scroll;
 }
+/*导航条*/
 .navigation_bar{
     position: fixed;
     top: 0;
@@ -122,4 +123,11 @@ a:active{
 }
 .side_li span{
     padding-left: 18px;
+    font: 12px/1.5 tahoma,arial,'Hiragino Sans GB','\5b8b\4f53',sans-serif;;
+}
+.navigation_container{
+    width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100%;
 }
