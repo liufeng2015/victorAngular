@@ -5,7 +5,12 @@ LFApp.config(['$routeProvider',function($routeProvider){
     $routeProvider
         .when('/',{
             templateUrl:'view/home.html',
-            controller:'homeCtrl'
+            controller:'homeCtrl',
+            resolve:{
+                'user':function(){
+
+                }
+            }
         })
         .when('/home',{
             templateUrl:'view/login.html',

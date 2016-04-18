@@ -10,7 +10,7 @@ function generateUniqueId() {
     currentIdNum += 1;
     return 'draggable-id-' + currentIdNum;
 }
-dragular.directive("lfDrag",function(){
+dragular.directive("zzjzDrag",function(){
     return{
         restrict:"A",
         link:function(scope, element, attrs){
@@ -48,7 +48,7 @@ dragular.directive("lfDrag",function(){
         }
     }
 });
-dragular.directive("lfDrop",function(){
+dragular.directive("zzjzDrop",function(){
     return{
         restrict:"A",
         link:function(scope, element, attrs){
