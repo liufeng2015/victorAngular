@@ -3,6 +3,7 @@
  */
 /*所有的服务工厂都是由$provide创建*/
 LFApp.constant('apiKey','2413112234');/*已经存在的变量值注册为服务将其注入到其他部分，例如给后端服务一apikey*//*可以注入到配置函数当中*/
+/*constant方法在所有配置之前执行*/
 LFApp.value('apiKey','2413112234');/*可以用来注册服务对象或函数*/
 LFApp.config('userServiceProvider',function(userServiceProvider){
     userServiceProvider.setCustomUrl("https://baidu.com");
