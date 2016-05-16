@@ -8,6 +8,6 @@ LFApp.config(['$httpProvider','$cacheFactory',function($httpProvider,$cacheFacto
     $httpProvider.interceptors.push('customInterceptor');/*拦截器*/
     /*默认请求头为：Accept：application/json,text/plain*/
     $httpProvider.defaults.headers.common['X-Requested-By']='liufengApp';/*默认头部配置*/
-    /*$httpProvider.defaults.headers.post['X-Posted-By']='liufengApp‘ 只对post请求头进行配置*/
+    $httpProvider.defaults.headers.post['X-Posted-By']='liufengPostApp';/*只对post请求头进行配置*/
     /*$httpProvider.defaults.headers.put['X-Posted-By']='liufengApp‘*/
 }]);

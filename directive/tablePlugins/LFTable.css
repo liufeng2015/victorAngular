@@ -1,0 +1,38 @@
+.lf_container{
+    width: 100%;
+}
+.lf_head{
+    height: 35px;
+}
+.lf_head span{
+    font-family:'微软雅黑';
+    font-size: 14px;
+}
+.lf_head input{
+    height: 35px;
+    border: 1px solid gray;
+}
+.lf_rowInput{
+    float: left;
+}
+.lf_rowInput input{
+    width: 80px;
+    border-radius: 3px;
+    height: 30px;
+}
+.lf_search{
+    float: right;
+}
+.lf_search input{
+    width: 140px;
+    height: 30px;
+    border-radius: 3px;
+}
+.lf_tableBorder{
+
+}
+.lf_table{
+    width: 100%;
+    border: 1px solid gray;
+    table-layout: fixed
+}

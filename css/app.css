@@ -87,7 +87,7 @@ a:active{
 }
 
 .main_content{
-    width: 1000px;
+    width: 1200px;
     margin-left: auto;
     margin-right: auto;
     height: 1200px;
@@ -130,4 +130,11 @@ a:active{
     margin-left: auto;
     margin-right: auto;
     height: 100%;
+}
+.demo{
+    width: 800px;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
 }
