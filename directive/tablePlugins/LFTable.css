@@ -7,6 +7,7 @@
 .lf_head span{
     font-family:'微软雅黑';
     font-size: 14px;
+    margin-right: 6px;
 }
 .lf_head input{
     height: 35px;
@@ -16,9 +17,10 @@
     float: left;
 }
 .lf_rowInput input{
-    width: 80px;
+    width: 90px;
     border-radius: 3px;
     height: 30px;
+    text-indent: 6px;
 }
 .lf_search{
     float: right;
@@ -27,12 +29,87 @@
     width: 140px;
     height: 30px;
     border-radius: 3px;
-}
-.lf_tableBorder{
-
+    text-indent: 6px;
 }
 .lf_table{
     width: 100%;
     border: 1px solid gray;
     table-layout: fixed
+}
+.lf_table th{
+    text-align: center;
+    height: 35px;
+    border: 1px solid gray;
+}
+.lf_table td{
+    text-align: center;
+    height: 30px;
+    border: 1px solid gray;
+}
+/*.lf_tbody_border{*/
+    /**/
+/*}*/
+.lf_tablebottom{
+    margin-top: 6px;
+    height: 40px;
+}
+.lf_left{
+     float: right;
+     width: 80px;
+     height: 100%;
+ }
+.lf_previous_step{
+    float: left;
+    border: 1px solid grey;
+    border-left: none;
+    width: 40px;
+    height: 100%;
+    line-height: 38px;
+    text-align: center;
+}
+.lf_previous_page{
+    float: left;
+    border: 1px solid grey;
+    border-bottom-left-radius: 3px;
+    border-top-left-radius: 3px;
+    width: 40px;
+    height: 100%;
+    line-height: 38px;
+    text-align: center;
+}
+.lf_center{
+    float: right;
+    max-height: 200px;
+    min-width: 40px;
+    height: 100%;
+}
+.lf_right{
+    float: right;
+    width: 80px;
+    height: 100%;
+}
+.lf_next_step{
+    float: left;
+    border: 1px solid grey;
+    border-right: none;
+    width: 40px;
+    height: 100%;
+    line-height: 38px;
+    text-align: center;
+}
+.lf_next_page{
+    float: left;
+    border: 1px solid grey;
+    border-bottom-right-radius: 3px;
+    border-top-right-radius: 3px;
+    width: 40px;
+    height: 100%;
+    line-height: 38px;
+    text-align: center;
+}
+
+.lf_single_step{
+    float: left;
+    border-bottom: 1px solid grey;
+    border-top: 1px solid grey;
 }
