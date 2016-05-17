@@ -1,0 +1,52 @@
+.panel_container{
+    position: absolute;
+     width: 60%;
+    height: 300px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 150px;
+    border: 1px solid gray;
+    font-family: '微软雅黑';
+    font-size: 14px;
+    border-radius: 3px;
+    overflow: hidden;
+}
+.panel_navigation{
+    width: 100%;
+    height: 30px;
+    border-bottom: 1px solid gray;
+    line-height: 30px;
+    cursor: move;
+}
+.panel_navigation span{
+    margin-left: 6px;
+    color: white;
+}
+.panel_function{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 90px;
+    height: 100%;
+    float: right;
+    cursor: pointer;
+}
+.panel_function li{
+    width: 30px;
+    height: 29px;
+    text-align: center;
+}
+.panel_transclude{
+    height: 100%;
+}
+.panel_bottom{
+    position: fixed;
+    width: 100%;
+    height: 30px;
+    bottom: 0;
+    border-top: 1px solid gray;
+    background-color: blue;
+    opacity: 0.5;
+    display: none;
+}
