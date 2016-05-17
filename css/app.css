@@ -4,7 +4,6 @@ body{
     width: 100%;
     height: 100%;
     background-color: white;
-    overflow: hidden;
 }
 /*主界面*/
 .home_container{
@@ -133,7 +132,9 @@ a:active{
     height: 100%;
 }
 .demo{
-    /*position: absolute;*/
-    height: 100%;
-    background: white;
+    width: 800px;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
 }

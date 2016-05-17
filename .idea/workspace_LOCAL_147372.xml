@@ -2,28 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5e6cbd4d-08f8-48e3-8a79-d477b026d1ee" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/directive/tablePlugins/LFTable.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/directive/tablePlugins/LFTable.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/bootstrap/fonts/glyphicons-halflings-regular.eot" afterPath="$PROJECT_DIR$/libs/bootstrap/fonts/glyphicons-halflings-regular.eot" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/bootstrap/fonts/glyphicons-halflings-regular.ttf" afterPath="$PROJECT_DIR$/libs/bootstrap/fonts/glyphicons-halflings-regular.ttf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/bootstrap/fonts/glyphicons-halflings-regular.woff" afterPath="$PROJECT_DIR$/libs/bootstrap/fonts/glyphicons-halflings-regular.woff" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/bootstrap/fonts/glyphicons-halflings-regular.woff2" afterPath="$PROJECT_DIR$/libs/bootstrap/fonts/glyphicons-halflings-regular.woff2" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SCROLL/click-scroll.js" afterPath="$PROJECT_DIR$/SCROLL/click-scroll.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SCROLL/demo.html" afterPath="$PROJECT_DIR$/SCROLL/demo.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SCROLL/index.css" afterPath="$PROJECT_DIR$/SCROLL/index.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/bootstrap/fonts/glyphicons-halflings-regular.eot" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/bootstrap/fonts/glyphicons-halflings-regular.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/bootstrap/fonts/glyphicons-halflings-regular.woff" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/bootstrap/fonts/glyphicons-halflings-regular.woff2" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/directive/panel/panel.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/directive/panel/panel.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/bootstrap/css/bootstrap-theme.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/bootstrap/css/bootstrap-theme.css.map" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/bootstrap/css/bootstrap-theme.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/bootstrap/css/bootstrap.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/bootstrap/css/bootstrap.css.map" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/bootstrap/css/bootstrap.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/bootstrap/fonts/glyphicons-halflings-regular.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/bootstrap/js/bootstrap.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/bootstrap/js/bootstrap.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/bootstrap/js/npm.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/app.css" afterPath="$PROJECT_DIR$/css/app.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/bootstrap/css/bootstrap-theme.css" afterPath="$PROJECT_DIR$/libs/bootstrap/css/bootstrap-theme.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/bootstrap/css/bootstrap-theme.css.map" afterPath="$PROJECT_DIR$/libs/bootstrap/css/bootstrap-theme.css.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/bootstrap/css/bootstrap-theme.min.css" afterPath="$PROJECT_DIR$/libs/bootstrap/css/bootstrap-theme.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/bootstrap/css/bootstrap.css" afterPath="$PROJECT_DIR$/libs/bootstrap/css/bootstrap.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/bootstrap/css/bootstrap.css.map" afterPath="$PROJECT_DIR$/libs/bootstrap/css/bootstrap.css.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/bootstrap/css/bootstrap.min.css" afterPath="$PROJECT_DIR$/libs/bootstrap/css/bootstrap.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/bootstrap/fonts/glyphicons-halflings-regular.svg" afterPath="$PROJECT_DIR$/libs/bootstrap/fonts/glyphicons-halflings-regular.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/bootstrap/js/bootstrap.js" afterPath="$PROJECT_DIR$/libs/bootstrap/js/bootstrap.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/bootstrap/js/bootstrap.min.js" afterPath="$PROJECT_DIR$/libs/bootstrap/js/bootstrap.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/bootstrap/js/npm.js" afterPath="$PROJECT_DIR$/libs/bootstrap/js/npm.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/app.js" afterPath="$PROJECT_DIR$/scripts/app.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/controller/content.controller.js" afterPath="$PROJECT_DIR$/scripts/controller/content.controller.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/view/main.content.html" afterPath="$PROJECT_DIR$/view/main.content.html" />
@@ -51,7 +48,7 @@
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="28" column="6" selection-start-line="28" selection-start-column="6" selection-end-line="28" selection-end-column="6" />
+              <caret line="30" column="24" selection-start-line="30" selection-start-column="24" selection-end-line="30" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -61,7 +58,7 @@
         <entry file="file://$PROJECT_DIR$/view/main.content.html">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
+              <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
               <folding>
                 <element signature="n#style#0;n#input#0;n#div#0;n#!!top" expanded="true" />
               </folding>
@@ -94,15 +91,9 @@
       <file leaf-file-name="content.controller.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/scripts/controller/content.controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.59717315">
-              <caret line="30" column="12" selection-start-line="30" selection-start-column="12" selection-end-line="30" selection-end-column="12" />
-              <folding>
-                <marker date="1463459160559" expanded="true" signature="0:40" placeholder="/** Created by liufeng on 16/4/3. ...*/" />
-                <marker date="1463459160559" expanded="true" signature="119:377" placeholder="[...]" />
-                <marker date="1463459160559" expanded="true" signature="129:209" placeholder="{&quot;group&quot;: &quot;组名1&quot;...}" />
-                <marker date="1463459160559" expanded="true" signature="219:293" placeholder="{&quot;group&quot;: &quot;组名2&quot;...}" />
-                <marker date="1463459160559" expanded="true" signature="303:371" placeholder="{&quot;group&quot;: &quot;组名3&quot;...}" />
-              </folding>
+            <state vertical-scroll-proportion="0.295053">
+              <caret line="21" column="12" selection-start-line="21" selection-start-column="12" selection-end-line="26" selection-end-column="28" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -161,11 +152,11 @@
         <option value="$PROJECT_DIR$/scripts/app.js" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/css/app.css" />
+        <option value="$PROJECT_DIR$/scripts/controller/content.controller.js" />
         <option value="$PROJECT_DIR$/view/home.html" />
         <option value="$PROJECT_DIR$/view/main.content.html" />
         <option value="$PROJECT_DIR$/directive/panel/panel.css" />
         <option value="$PROJECT_DIR$/directive/panel/panel.js" />
-        <option value="$PROJECT_DIR$/scripts/controller/content.controller.js" />
       </list>
     </option>
   </component>
@@ -652,7 +643,7 @@
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="28" column="6" selection-start-line="28" selection-start-column="6" selection-end-line="28" selection-end-column="6" />
+          <caret line="30" column="24" selection-start-line="30" selection-start-column="24" selection-end-line="30" selection-end-column="24" />
           <folding />
         </state>
       </provider>
@@ -708,7 +699,7 @@
     <entry file="file://$PROJECT_DIR$/view/main.content.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
           <folding>
             <element signature="n#style#0;n#input#0;n#div#0;n#!!top" expanded="true" />
           </folding>
@@ -717,15 +708,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts/controller/content.controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.59717315">
-          <caret line="30" column="12" selection-start-line="30" selection-start-column="12" selection-end-line="30" selection-end-column="12" />
-          <folding>
-            <marker date="1463459160559" expanded="true" signature="0:40" placeholder="/** Created by liufeng on 16/4/3. ...*/" />
-            <marker date="1463459160559" expanded="true" signature="119:377" placeholder="[...]" />
-            <marker date="1463459160559" expanded="true" signature="129:209" placeholder="{&quot;group&quot;: &quot;组名1&quot;...}" />
-            <marker date="1463459160559" expanded="true" signature="219:293" placeholder="{&quot;group&quot;: &quot;组名2&quot;...}" />
-            <marker date="1463459160559" expanded="true" signature="303:371" placeholder="{&quot;group&quot;: &quot;组名3&quot;...}" />
-          </folding>
+        <state vertical-scroll-proportion="0.295053">
+          <caret line="21" column="12" selection-start-line="21" selection-start-column="12" selection-end-line="26" selection-end-column="28" />
+          <folding />
         </state>
       </provider>
     </entry>

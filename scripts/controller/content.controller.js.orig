@@ -16,6 +16,7 @@ LFApp.controller('contentCtrl',["$scope",function($scope){
             items:["组件1","组件2"]
         }
     ];
+<<<<<<< HEAD
     $scope.panelList = [];
     $scope.showPanel = function(){
         $scope.panelList.push({
@@ -37,9 +38,11 @@ LFApp.controller('contentCtrl',["$scope",function($scope){
         console.log("+++++++");
     }
 
+=======
     $scope.tableConfig = {
         headList:[{k:"age"},{k:"name"},{k:"height"},{k:"weight"}],
         itemList:[[23,223,232,453],[11,343,353,3535],[11,343,353,3535],[11,343,353,3535],[11,343,353,3535],[11,343,353,3535]],
         rows:5
     }
+>>>>>>> c7d7de907c69d1be12c9a829223f96ed8d990352
 }]);

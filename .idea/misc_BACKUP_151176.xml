@@ -30,7 +30,10 @@
     <ConfirmationsSetting value="0" id="Add" />
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
+<<<<<<< .merge_file_a50788
+=======
   <component name="ProjectRootManager" version="2" />
+>>>>>>> .merge_file_a50808
   <component name="masterDetails">
     <states>
       <state key="ScopeChooserConfigurable.UI">

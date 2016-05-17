@@ -1,10 +1,15 @@
 <div class="main_content">
+<<<<<<< HEAD
     <div class="side_custom" side-list side-data="files"></div>
     <input type="button"  style="    float: left; width: 80px;height: 30px;margin-top: 38px;" value="点击" ng-click="showPanel()" >
     <panel ng-repeat="data in panelList" style-config = "data"  min-size = 'contentCtrl.setMinSize()' max-size = 'contentCtrl.setMaxSize()' close-view = 'contentCtrl.setCloseView()' >
         <div class="demo">你好</div>
     </panel>
-	<div class="demo">
+</div>
+=======
+    <!--<div class="side_custom" side-list side-data="files"></div>-->
+    <div class="demo">
         <lf-table table-config="tableConfig"></lf-table>
     </div>
 </div>
+>>>>>>> c7d7de907c69d1be12c9a829223f96ed8d990352
