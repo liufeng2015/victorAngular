@@ -42,11 +42,7 @@
                     var arr = [];
                     for (var i = 0; i < itemList.length;i++){
                         //if()
-
                     }
-                    //for (var i = 0; i < num;i++){
-                    //
-                    //}
                     $scope.itemList = arr;
                 }
             }

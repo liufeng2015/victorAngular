@@ -1,5 +1,9 @@
 <div class="main_content">
-	<div class="demo">
-        <lf-table table-config="tableConfig"></lf-table>
-    </div>
+	<!--<div class="demo">-->
+        <!--<lf-table table-config="tableConfig"></lf-table>-->
+    <!--</div>-->
+    <button style="margin-top: 50px" ng-click="addPanel()">panelAdd</button>
+    <panel ng-repeat ='data in panelList' style-config = 'data'>
+        <div><h5>nothing!</h5></div>
+    </panel>
 </div>

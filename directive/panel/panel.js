@@ -3,56 +3,169 @@
  */
 (function(){
     'use strict';
-    angular.module("panel",[])
-        .directive("panel",['$document','$compile',function($document,$compile){
+    var lf_panel_z_index = 0;
+    var lf_panel_id = 0;
+    var lf_animate_bool = true;
+    angular.module("panel",[]).factory('panelService',['$rootScope',function($rootScope){
+        var _group = [];
+        var _bottomGroup = [];
+        var _deleteScope = null;
+        function setAnimate(animateObj,target) {
+            var timer = null;
+            timer = setInterval(function () {
+                var iStop = true;
+                var obj = animateObj.prop("offsetLeft");
+                var speed = (target - obj) / 200;
+                speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+                if (obj != target) {
+                    iStop = false;
+                }
+                animateObj.css({
+                    left: obj + speed + "px"
+                });
+                if (iStop) {
+                    clearInterval(timer);
+                }
+            }, 60);
+        }
+        return{
+            pushPanel:function(currentScope){
+                _group.push(currentScope);
+            },
+            getPanelList:function(){
+                return _group;
+            },
+            deletePanel:function(list,currentScope){
+                var len = _group.length;
+                for (var i = 0; i < len;i++){
+                    if(_group[i].panelId == _deleteScope.panelId){
+                        _group.splice(i, 1);
+                        list.splice(i, 1);
+                        currentScope.$digest();
+                        break;
+                    }
+                }
+            },
+            deletePanelBroadcast:function(currentScope){
+                _deleteScope = currentScope;
+                $rootScope.$broadcast("deletePanel");
+            },
+            addBottomPanel:function(currentScope){
+                var len = _bottomGroup.length;
+                var isExist = false;
+                for(var i = 0; i < len; i++){
+                    if(_bottomGroup[i].panelId == currentScope.panelId){
+                        isExist = true;
+                        break;
+                    }
+                }
+                !isExist && _bottomGroup.push(currentScope);
+            },
+            removeBottomPanel:function(currentScope){
+                var len = _bottomGroup.length;
+                var isDelete = false;
+                for(var i = 0; i < len; i++){
+                    if(_bottomGroup[i].panelId == currentScope.panelId){
+                        _bottomGroup.splice(i, 1);
+                        isDelete = true;
+                        break;
+                    }
+                }
+                if(isDelete){
+                    var length = _bottomGroup.length;
+                    for(var j = 0;j < length;j++ ){
+                        _bottomGroup[j].container.css({
+                            left:j*160+"px"
+                        })
+                    }
+                }
+            },
+            getBottomPanelList:function(){
+                return _bottomGroup;
+            },
+            bottomPanelLayout:function(){
+                var len = _bottomGroup.length;
+                for(var i = 0;i < len;i++ ){
+                    setAnimate(_bottomGroup[i].container,i*160);
+                }
+            }
+        }
+    }])
+        .directive("panel",['$document','$compile','panelService',function($document,$compile,panelService){
             function linkOperation(){
                 return function (scope,element,attrs){
-                    //var minSizeFunc = eval(attrs.minSize);
-                    //var maxSizeFunc = eval(attrs.maxSize);
-                    //var closeViewFunc = eval(attrs.closeView);
-
-                    var container = angular.element(element[0].querySelector('.panel_container'));
-                    var header = angular.element(container[0].querySelector('.panel_navigation'));
-                    var func = angular.element(header[0].querySelector('.panel_function'));
-                    var minSize = angular.element(func[0].querySelector("#panel_minsize"));
-                    var maxSize = angular.element(func[0].querySelector("#panel_maxsize"));
-                    var closeView = angular.element(func[0].querySelector("#panel_close"));
-                    var corner = angular.element(container[0].querySelector('.panel_corner'));
-                    var options = scope.styleConfig;
-                    applyStyles(options);
+                    var parentNode = angular.element($document[0].body);
+                    if(!parentNode[0].querySelector(".lf_panel_bottom")){
+                        var divs = "<div class='lf_panel_bottom'></div>";
+                        var template = angular.element(divs);
+                        var newHtml = $compile(template)(scope);
+                        parentNode.append(newHtml);
+                    }
+                    lf_panel_id ++;
+                    scope.panelId = "lf_panel_id_"+lf_panel_id;
+                    var container = angular.element(element[0].querySelector('.lf_panel_container'));
+                    container.css({
+                        top:Math.floor(Math.random()*120+80)+"px",
+                        left:Math.floor(Math.random()*190+120)+"px",
+                        width:scope.styleConfig.defaultWidth,
+                        height:scope.styleConfig.defaultHeight
+                    });
+                    container.css("z-index",lf_panel_z_index);
+                    scope.container = container;
+                    var header = angular.element(container[0].querySelector('.lf_panel_navigation'));
+                    var func = angular.element(header[0].querySelector('.lf_panel_function'));
+                    var minSize = angular.element(func[0].querySelector("#lf_panel_minsize"));
+                    var maxSize = angular.element(func[0].querySelector("#lf_panel_maxsize"));
+                    var closeView = angular.element(func[0].querySelector("#lf_panel_close"));
+                    var corner = angular.element(container[0].querySelector('.lf_panel_corner'));
+                    var bottomControl = angular.element(document.getElementsByClassName('lf_panel_bottom'));
+                    panelService.pushPanel(scope);
                     scope.postion = {
-                        left:container.prop('offsetLeft')+"px",
-                        top:container.prop('offsetTop')+"px",
-                        width:container.prop('offsetWidth')+"px",
-                        height:container.prop('offsetHeight')+"px"
+                        left:container.prop('offsetLeft'),
+                        top:container.prop('offsetTop'),
+                        width:container.prop('offsetWidth'),
+                        height:container.prop('offsetHeight')
                     };
+                    function setContainerIndex(){
+                        lf_panel_z_index++;
+                        container.css("z-index",lf_panel_z_index);
+                    }
+                    container.on("mousedown",function(){
+                        setContainerIndex();
+                    });
+                    var moveDisabled = false;
                     var disX = 0;
                     var disY = 0;
-                    header[0].addEventListener('mousedown', function (event) {
+                    header.on('mousedown', function (event) {
                         event.preventDefault();
+                        if(moveDisabled){
+                            return;
+                        }
                         disX = event.clientX - container.prop('offsetLeft');
                         disY = event.clientY - container.prop('offsetTop');
                         $document.on('mousemove', mouseMove);
                         $document.on('mouseup', mouseUp);
                     });
                     function mouseMove(event) {
-                        var w = event.clientX - disX;
-                        var l = event.clientY - disY;
-                        if(w <= 0){
-                            w = 0;
-                        }else if( w > $document[0].body.clientWidth - container.prop('offsetWidth')){
-                            w = $document[0].body.clientWidth - container.prop('offsetWidth');
-                        }
+                        var l = event.clientX - disX;
+                        var t = event.clientY - disY;
+                        var bHeight = bottomControl.prop('offsetTop');
                         if(l <= 0){
                             l = 0;
-                        }else if( l > $document[0].body.clientHeight - container.prop('offsetHeight')){
-                            l = $document[0].body.clientHeight - container.prop('offsetHeight');
+                        }else if( l > $document[0].body.clientWidth - container.prop('offsetWidth')){
+                            l = $document[0].body.clientWidth - container.prop('offsetWidth');
                         }
-                        scope.postion.top = l+"px";
-                        scope.postion.left = w+"px";
+                        if(t <= 0){
+                            t = 0;
+                        }
+                        else if(t > bHeight - container.prop('offsetHeight')){
+                            t = bHeight - container.prop('offsetHeight');
+                        }
+                        scope.postion.top = t;
+                        scope.postion.left = l;
                         container.css({
-                            top: l + 'px',
-                            left: w + 'px'
+                            top: t + 'px',
+                            left: l + 'px'
                         });
                     }
                     function mouseUp() {
@@ -61,7 +174,7 @@
                     }
                     var startHeight = 0;
                     var startWidth = 0;
-                    corner[0].addEventListener('mousedown', function (event) {
+                    corner.on('mousedown', function (event) {
                         event.preventDefault();
                         startWidth = event.clientX - container.prop('offsetLeft') - container.prop('offsetWidth');
                         startHeight = event.clientY - container.prop('offsetTop') - container.prop('offsetHeight');
@@ -71,8 +184,15 @@
                     function mouseDrag(event) {
                         var height = event.clientY - container.prop('offsetTop')  - startHeight;
                         var width = event.clientX - container.prop('offsetLeft') - startWidth;
-                        scope.postion.width = width+"px";
-                        scope.postion.height = height+"px";
+                        var bHeight = bottomControl.prop('offsetTop');
+                        if(width >= $document[0].body.clientWidth - container.prop('offsetLeft')){
+                            width = $document[0].body.clientWidth - container.prop('offsetLeft');
+                        }
+                        if(height >= bHeight- container.prop('offsetTop')){
+                            height = bHeight - container.prop('offsetTop');
+                        }
+                        scope.postion.width = width;
+                        scope.postion.height = height;
                         container.css({
                             height: height + 'px',
                             width: width + 'px'
@@ -82,67 +202,126 @@
                         $document.off('mousemove', mouseDrag);
                         $document.off('mouseup', mouseDrop);
                     }
-                    minSize[0].addEventListener('mousedown',function(event){
-
-                    });
-                    maxSize[0].addEventListener('mousedown',function(event){
-                        if(container.css('width') != "100%"){
-                            container.css({
-                                top: '0px',
-                                left: '0px',
-                                width:'100%',
-                                height:'100%'
-                            });
-                            maxSize.removeClass("glyphicon-resize-full");
-                            maxSize.addClass("glyphicon-resize-small");
-                        }else {
-                            container.css(scope.postion);
-                            maxSize.removeClass("glyphicon-resize-small");
-                            maxSize.addClass("glyphicon-resize-full");
-                        }
+                    maxSize.on('mousedown',function(event){
+                        event.preventDefault();
                         event.cancelBubble = true;
-                    });
-                    closeView[0].addEventListener('mousedown',function(event){
+                        setContainerIndex();
+                        if(lf_animate_bool){
+                            minSize.removeClass("glyphicon glyphicon-th-large");
+                            minSize.addClass("glyphicon glyphicon-minus");
+                            panelService.removeBottomPanel(scope);
+                            if(container.prop('offsetWidth') != $document[0].body.clientWidth){
+                                var bHeight = bottomControl.prop('offsetTop');
+                                lf_animate_bool = false;
+                                setAnimate({
+                                    width:$document[0].body.clientWidth,
+                                    height:bHeight,
+                                    left:0,
+                                    top:0
+                                },function(){
+                                    maxSize.removeClass("glyphicon-resize-full");
+                                    maxSize.addClass("glyphicon-resize-small");
+                                    corner.css({display:"none"});
+                                    lf_animate_bool = true;
+                                });
+                            }else {
+                                lf_animate_bool = false;
+                                setAnimate({width:scope.postion.width,height:scope.postion.height,left:scope.postion.left,top:scope.postion.top},function(){
+                                    maxSize.removeClass("glyphicon-resize-small");
+                                    maxSize.addClass("glyphicon-resize-full");
+                                    corner.css({display:"block"});
+                                    lf_animate_bool = true;
+                                    moveDisabled = false;
+                                });
+                            }
+                        }
 
                     });
+                    minSize.on('mousedown',function(event){
+                        event.preventDefault();
+                        setContainerIndex();
+                        event.cancelBubble = true;
+                        if(lf_animate_bool){
+                            if(container.prop('offsetWidth') == 160){
+                                panelService.removeBottomPanel(scope);
+                                lf_animate_bool = false;
+                                setAnimate({
+                                    width:scope.postion.width,
+                                    height:scope.postion.height,
+                                    left:scope.postion.left,
+                                    top:scope.postion.top
+                                },function(){
+                                    minSize.removeClass("glyphicon glyphicon-th-large");
+                                    minSize.addClass("glyphicon glyphicon-minus");
+                                    corner.css({display:"block"});
+                                    lf_animate_bool = true;
+                                    moveDisabled = false;
+                                });
+                            }else {
+                                var curTop = bottomControl.prop('offsetTop');
+                                var toLeft = panelService.getBottomPanelList().length*160;
+                                lf_animate_bool = false;
+                                setAnimate({width:160,height:35,left:toLeft,top:curTop},function(){
+                                    minSize.removeClass("glyphicon glyphicon-minus");
+                                    minSize.addClass("glyphicon glyphicon-th-large");
+                                    maxSize.removeClass("glyphicon-resize-small");
+                                    maxSize.addClass("glyphicon-resize-full");
+                                    corner.css({display:"none"});
+                                    panelService.addBottomPanel(scope);
+                                    lf_animate_bool = true;
+                                    moveDisabled = true;
+                                });
+                            }
+                        }
 
-                    function applyStyles(options) {
-                        container.css({
-                            padding: options.headerHeight + 'px 0 0',
-                            position: 'absolute',
-                            border: [options.borderStyle, options.headerColor].join(' ')
-                        });
-
-                        header.css({
-                            position: 'absolute',
-                            top: 0,
-                            height: options.headerHeight + 'px',
-                            width: '100%',
-                            background: options.headerColor,
-                            cursor: 'move'
-                        });
-
-                        corner.css({
-                            position: 'absolute',
-                            bottom: -options.cornerSize / 2 + 'px',
-                            right: -options.cornerSize / 2 + 'px',
-                            width: options.cornerSize + 'px',
-                            height: options.cornerSize + 'px',
-                            background: options.cornerColor || options.headerColor,
-                            transform: 'rotate(45deg)',
-                            cursor: 'nwse-resize'
-                        });
-                    }
+                    });
+                    function getStyle(d){
+                        if(d == "width") return container.prop("offsetWidth");
+                        if(d == 'height')return container.prop("offsetHeight");
+                        if(d == 'left') return container.prop("offsetLeft");
+                        if(d == 'top') return container.prop("offsetTop");
+                        return 0;
+                    };
+                    function setAnimate(data,backFunc){
+                        var timer = null;
+                        timer = setInterval(function(){
+                            var iStop=true;
+                            for(var item in data){
+                                var obj = getStyle(item);
+                                var speed = (data[item]-obj)/8;
+                                speed = speed>0?Math.ceil(speed):Math.floor(speed);
+                                if(obj != data[item])
+                                {
+                                    iStop = false;
+                                }
+                                var newO = new  Object();
+                                newO[item]= obj+speed+"px";
+                                container.css(newO);
+                            }
+                            if(iStop){
+                                clearInterval(timer);
+                                if(backFunc){
+                                    backFunc();
+                                }
+                            }
+                        },30);
+                    };
+                    closeView.on('mousedown',function(){
+                        event.preventDefault();
+                        setContainerIndex();
+                        event.cancelBubble = true;
+                        panelService.deletePanelBroadcast(scope);
+                        panelService.removeBottomPanel(scope);
+                    });
                 }
             }
-            var templateDivs = "<div class='panel_container'>";
-            templateDivs += "<div class='panel_navigation'><span>数据视图</span><ul class='panel_function'><li id='panel_minsize'class='glyphicon glyphicon-minus'></li><li id='panel_maxsize' class='glyphicon glyphicon-resize-full'></li><li id = 'panel_close' class='glyphicon glyphicon-remove'></li></ul></div>";
-            templateDivs += "<div class='panel_corner'></div>";
-            templateDivs += "<div class='panel_transclude' ng-transclude></div>";
+            var templateDivs = "<div class='lf_panel_container'>";
+            templateDivs += "<div class='lf_panel_navigation'><span ng-bind='styleConfig.defaultName'></span><ul class='lf_panel_function'><li id='lf_panel_minsize'class='glyphicon glyphicon-minus'></li><li id='lf_panel_maxsize' class='glyphicon glyphicon-resize-full'></li><li id = 'lf_panel_close' class='glyphicon glyphicon-remove'></li></ul></div>";
+            templateDivs += "<div class='lf_panel_corner'></div>";
+            templateDivs += "<div class='lf_panel_transclude' ng-transclude></div>";
             templateDivs += "<div>";
             return{
                 transclude:true,
-                //require:'^panelBottom',
                 scope:{
                     styleConfig:"="
                 },
@@ -150,9 +329,5 @@
                 link:linkOperation()
             }
         }])
-        //.directive('panelBottom',['$compile',function($compile){
-        //    return{
-        //
-        //    }
-        //}])
+
 }());
