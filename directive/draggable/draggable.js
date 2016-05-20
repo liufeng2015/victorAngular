@@ -88,11 +88,11 @@
                     var customMouseUp = scope.$eval(attrs.mouseUp);
                     element.on("mouseenter",function(event){
                         event.preventDefault();
-                        if(event.fromElement.lastChild && event.fromElement.lastChild.id == "lf_drag_object"){
+                        if(event.fromElement && event.fromElement.id == "lf_drag_object"){
                             var drag_object = angular.element($document[0].querySelector("#lf_drag_object"));
                             var data = draggableService.getDragData();
                             if(angular.isFunction(customMouseUp)){
-                                customMouseUp(data);
+                                customMouseUp();
                             };
                         }
                     });

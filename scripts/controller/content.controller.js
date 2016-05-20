@@ -45,10 +45,7 @@ LFApp.controller('contentCtrl',["$scope",'panelService',function($scope,panelSer
     };
     $scope.dragParam = "config111111111";
     this.mouseUp = function(){
-        return function(data){
-            alert(data);
-        }
-
+        alert("ok");
     }
 
 }]);

@@ -85,7 +85,77 @@
             }
         }
     }])
-        .directive("panel",['$document','$compile','panelService',function($document,$compile,panelService){
+        .factory("windowResize",["$window", "$timeout",function($window, $timeout){
+            return function ($scope) {
+                var fns = [];
+                function callAll() {
+                    for (var i = 0; i < fns.length; i++) {
+                        fns[i]();
+                    }
+                }
+                var currentWindow = angular.element($window);
+                currentWindow.on("resize", callAll);
+                $scope.$on("$destroy", function () {
+                    currentWindow.off("resize", callAll);
+                });
+                return {
+                    call: function (fn) {
+                        fns.push(fn);
+                        $timeout(fn);
+                        return this;
+                    }
+                };
+            };
+        }])
+        .factory("delayWait",["$timeout",function($timeout){
+            return function (wait, fn, no_postpone) {
+                var args, context, result, timeout;
+                var executed = true;
+                function ping() {
+                    result = fn.apply(context || this, args || []);
+                    context = args = null;
+                    executed = true;
+                }
+                function cancel() {
+                    if (timeout) {
+                        $timeout.cancel(timeout);
+                        timeout = null;
+                    }
+                }
+                function wrapper() {
+                    context = this;
+                    args = arguments;
+                    if (!no_postpone) {
+                        cancel();
+                        timeout = $timeout(ping, wait);
+                    } else if (executed) {
+                        executed = false;
+                        timeout = $timeout(ping, wait);
+                    }
+                }
+                function flushPending() {
+                    var pending = !!context;
+                    if (pending) {
+                        cancel();
+                        ping();
+                    }
+                    return pending;
+                }
+                wrapper.flush = function () {
+                    if (!flushPending() && !timeout) {
+                        ping();
+                    }
+                    return result;
+                };
+                wrapper.flushPending = function () {
+                    flushPending();
+                    return result;
+                };
+                wrapper.cancel = cancel;
+                return wrapper;
+            };
+        }])
+        .directive("panel",['$document','$window','$compile','panelService','windowResize','delayWait',function($document,$window,$compile,panelService,windowResize,delayWait){
             function linkOperation(){
                 return function (scope,element,attrs){
                     var parentNode = angular.element($document[0].body);
@@ -306,6 +376,31 @@
                         event.cancelBubble = true;
                         panelService.deletePanelBroadcast(scope);
                         panelService.removeBottomPanel(scope);
+                    });
+                    var resizeX = bottomControl.prop("offsetWidth");
+                    var resizeY = bottomControl.prop("offsetTop");
+                    var resizeDelay = delayWait(500,function(){
+                        var l = container.prop("offsetLeft")+(bottomControl.prop("offsetWidth")-resizeX);
+                        var t = container.prop("offsetTop")+(bottomControl.prop("offsetTop")-resizeY);
+                        //if(l <= 0){
+                        //    l = 0;
+                        //}else if(l > $document[0].body.clientWidth - container.prop("offsetWidth")){
+                        //    l = $document[0].body.clientWidth - container.prop("offsetWidth");
+                        //}
+                        if(t <= 0){
+                            t = 0;
+                        }else if(t > bottomControl.prop("offsetTop")-container.prop("offsetHeight")+35){
+                            t = bottomControl.prop("offsetTop")-container.prop("offsetHeight")+35;
+                        }
+                        container.css({
+                            //left:l+"px",
+                            top:t+"px"
+                        });
+                        resizeX = bottomControl.prop("offsetWidth");
+                        resizeY = bottomControl.prop("offsetTop");
+                    });
+                    windowResize(scope).call(function(){
+                        resizeDelay();
                     });
                 }
             }
