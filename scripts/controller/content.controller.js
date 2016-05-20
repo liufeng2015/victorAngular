@@ -37,5 +37,18 @@ LFApp.controller('contentCtrl',["$scope",'panelService',function($scope,panelSer
     $scope.$on("deletePanel",function(){
         panelService.deletePanel($scope.panelList,$scope);
     });
+    /*draggable*/
+    $scope.configStyle = {
+        width:"100px",
+        height:"100px",
+        background:"red"
+    };
+    $scope.dragParam = "config111111111";
+    this.mouseUp = function(){
+        return function(data){
+            alert(data);
+        }
+
+    }
 
 }]);
