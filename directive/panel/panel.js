@@ -82,12 +82,6 @@
             },
             getBottomPanelList:function(){
                 return _bottomGroup;
-            },
-            bottomPanelLayout:function(){
-                var len = _bottomGroup.length;
-                for(var i = 0;i < len;i++ ){
-                    setAnimate(_bottomGroup[i].container,i*160);
-                }
             }
         }
     }])
