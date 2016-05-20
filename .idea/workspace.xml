@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5e6cbd4d-08f8-48e3-8a79-d477b026d1ee" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/misc_BACKUP_151176.xml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/misc_BASE_151176.xml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/misc_LOCAL_151176.xml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/misc_REMOTE_151176.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/directive/panel/demo.js" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/libs/bootstrap/css/bootstrap-theme_BACKUP_144204.css" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/libs/bootstrap/css/bootstrap-theme_BACKUP_146388.css" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/libs/bootstrap/css/bootstrap-theme_BACKUP_151292.css" afterPath="" />
@@ -21,10 +21,6 @@
       <change type="DELETED" beforePath="$PROJECT_DIR$/libs/bootstrap/css/bootstrap-theme_REMOTE_144204.css" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/libs/bootstrap/css/bootstrap-theme_REMOTE_146388.css" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/libs/bootstrap/css/bootstrap-theme_REMOTE_151292.css" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/directive/draggable/draggable.js" afterPath="$PROJECT_DIR$/directive/draggable/draggable.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/directive/panel/panel.js" afterPath="$PROJECT_DIR$/directive/panel/panel.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/controller/content.controller.js" afterPath="$PROJECT_DIR$/scripts/controller/content.controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/view/main.content.html" afterPath="$PROJECT_DIR$/view/main.content.html" />
     </list>
     <ignored path="victorAngular.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -337,9 +333,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-13" y="0" width="1716" height="1040" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32181168" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32181168" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
