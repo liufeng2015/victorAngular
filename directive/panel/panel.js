@@ -168,12 +168,6 @@
                     lf_panel_id ++;
                     scope.panelId = "lf_panel_id_"+lf_panel_id;
                     var container = angular.element(element[0].querySelector('.lf_panel_container'));
-                    container.css({
-                        top:Math.floor(Math.random()*120+80)+"px",
-                        left:Math.floor(Math.random()*190+120)+"px",
-                        width:scope.styleConfig.defaultWidth,
-                        height:scope.styleConfig.defaultHeight
-                    });
                     container.css("z-index",lf_panel_z_index);
                     scope.container = container;
                     var header = angular.element(container[0].querySelector('.lf_panel_navigation'));
@@ -183,6 +177,12 @@
                     var closeView = angular.element(func[0].querySelector("#lf_panel_close"));
                     var corner = angular.element(container[0].querySelector('.lf_panel_corner'));
                     var bottomControl = angular.element(document.getElementsByClassName('lf_panel_bottom'));
+                    container.css({
+                        top:Math.floor(Math.random()*100+80)+"px",
+                        left:Math.floor(Math.random()*130+120)+"px",
+                        width:scope.styleConfig.defaultWidth*$document[0].body.clientWidth+"px",
+                        height:scope.styleConfig.defaultHeight*bottomControl.prop("offsetTop")+"px"
+                    });
                     panelService.pushPanel(scope);
                     scope.postion = {
                         left:container.prop('offsetLeft'),
@@ -301,6 +301,7 @@
                         }
 
                     });
+                    scope.isAtBottom = false;
                     minSize.on('mousedown',function(event){
                         event.preventDefault();
                         setContainerIndex();
@@ -320,6 +321,7 @@
                                     corner.css({display:"block"});
                                     lf_animate_bool = true;
                                     moveDisabled = false;
+                                    scope.isAtBottom = false;
                                 });
                             }else {
                                 var curTop = bottomControl.prop('offsetTop');
@@ -352,7 +354,7 @@
                             var iStop=true;
                             for(var item in data){
                                 var obj = getStyle(item);
-                                var speed = (data[item]-obj)/8;
+                                var speed = (data[item]-obj)/4;
                                 speed = speed>0?Math.ceil(speed):Math.floor(speed);
                                 if(obj != data[item])
                                 {
@@ -380,7 +382,7 @@
                     var resizeX = bottomControl.prop("offsetWidth");
                     var resizeY = bottomControl.prop("offsetTop");
                     var resizeDelay = delayWait(500,function(){
-                        var l = container.prop("offsetLeft")+(bottomControl.prop("offsetWidth")-resizeX);
+                        //var l = container.prop("offsetLeft")+(bottomControl.prop("offsetWidth")-resizeX);
                         var t = container.prop("offsetTop")+(bottomControl.prop("offsetTop")-resizeY);
                         //if(l <= 0){
                         //    l = 0;
@@ -393,7 +395,6 @@
                             t = bottomControl.prop("offsetTop")-container.prop("offsetHeight")+35;
                         }
                         container.css({
-                            //left:l+"px",
                             top:t+"px"
                         });
                         resizeX = bottomControl.prop("offsetWidth");
