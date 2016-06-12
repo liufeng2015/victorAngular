@@ -50,6 +50,7 @@
 .lf_tablebottom{
     margin-top: 6px;
     height: 40px;
+    cursor: default;
 }
 .lf_left{
      float: right;
@@ -78,8 +79,10 @@
 .lf_center{
     float: right;
     max-height: 200px;
-    min-width: 40px;
+    width: 156px;
     height: 100%;
+    margin-top: 1px;
+    overflow: hidden;
 }
 .lf_right{
     float: right;
@@ -90,6 +93,7 @@
     float: left;
     border: 1px solid grey;
     border-right: none;
+    border-left: none;
     width: 40px;
     height: 100%;
     line-height: 38px;
@@ -108,6 +112,26 @@
 
 .lf_single_step{
     float: left;
-    border-bottom: 1px solid grey;
-    border-top: 1px solid grey;
+    border: 1px solid grey;
+    border-left: none;
+    border-right: none;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.lf_single_ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    height: 100%;
+    left: 0;
+    position: absolute;
+}
+.lf_center_li{
+    float: left;
+    width: 39px;
+    height: 100%;
+    text-align: center;
+    line-height: 38px;
+    border-right: 1px solid gray;
 }
